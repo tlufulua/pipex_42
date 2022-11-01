@@ -6,7 +6,7 @@
 /*   By: tlufulua <tlufulua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:48:50 by tlufulua          #+#    #+#             */
-/*   Updated: 2022/11/01 03:10:25 by tlufulua         ###   ########.fr       */
+/*   Updated: 2022/11/01 16:43:06 by tlufulua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,9 @@
 # include <sys/wait.h>
 # include <fcntl.h>
 # include <stdio.h>
+
+void	father(int *fd, char **argv, char **env);
+void	child(int *fd, char **argv, char **env);
+void	error(char *str);
+
 #endif
