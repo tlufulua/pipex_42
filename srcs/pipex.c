@@ -6,7 +6,7 @@
 /*   By: tlufulua <tlufulua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:46:43 by tlufulua          #+#    #+#             */
-/*   Updated: 2022/10/30 19:57:28 by tlufulua         ###   ########.fr       */
+/*   Updated: 2022/11/01 01:19:18 by tlufulua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,8 @@ int	main(int argc, char **argv)
 		fd_copy = close(fd_copy);
 		ft_printf("close fd_copy: %d\n", fd);
 	}
+
+	//Lo siguiente es para probar a direccionar la salida de STOUT a un archivo
+	duplicate(argc, argv);
 	return (0);
 }
