@@ -6,7 +6,7 @@
 /*   By: tlufulua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 16:48:24 by tlufulua          #+#    #+#             */
-/*   Updated: 2022/11/01 19:40:30 by tlufulua         ###   ########.fr       */
+/*   Updated: 2022/11/02 00:31:03 by tlufulua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	**get_path(char **env)
 	int		i;
 
 	i = 0;
-	while (!ft_strnstr(env[i], "PATH", 5))
+	while (!ft_strnstr(env[i], "PATH", 5) && env[i])
 		i++;
 	if (!env[i])
 		ft_error("\033[31merror:\033[0m path not found");

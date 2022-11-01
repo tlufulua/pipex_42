@@ -6,7 +6,7 @@
 /*   By: tlufulua <tlufulua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:46:43 by tlufulua          #+#    #+#             */
-/*   Updated: 2022/11/01 19:40:34 by tlufulua         ###   ########.fr       */
+/*   Updated: 2022/11/02 00:35:11 by tlufulua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	father(int *fd, char **argv, char **env)
 int	main(int argc, char **argv, char **env)
 {
 	int		fd[2];
+	pid_t	check;
 	pid_t	fr;
 
 	if (argc == 5)
@@ -66,7 +67,8 @@ int	main(int argc, char **argv, char **env)
 			ft_error("\033[31merror\033[0m: fork failure");
 		if (fr == 0) //hijo
 			child(fd, argv, env);
-		if (waitpid(fr, NULL, 0))
+		check = waitpid(fr, NULL, 0);
+		if (!check)
 			return (-1);
 		if (fr) //padre
 			father(fd, argv, env);
