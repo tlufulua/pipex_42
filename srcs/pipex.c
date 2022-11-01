@@ -6,21 +6,16 @@
 /*   By: tlufulua <tlufulua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:46:43 by tlufulua          #+#    #+#             */
-/*   Updated: 2022/11/01 03:48:10 by tlufulua         ###   ########.fr       */
+/*   Updated: 2022/11/01 15:10:08 by tlufulua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pipex.h>
 
-void	error()
+void	error(char	*str)
 {
-	if (argc != 5)
-	{
-		ft_putstr_fd("Error: Wrong number of arguments\n", 2);
-		return(-1);
-	}
-	perror("Error");
-	exit(-1);
+	perror(str);
+	exit(EXIT_FAILURE);
 }
 void	child(int *fd, char **argv, char **env)
 {
@@ -61,13 +56,14 @@ void	father(int *fd, char **argv, char **env)
 		pipe(fd);
 		fr = fork();
 		if (fr == -1)
-			error();
+			error("\033[31merror\033[0m: fork failure\n");
 		if (fr == 0) //hijo
 			child(fd, argv, env);
 		waitpid(fr, NULL, 0); //no lo entiendo
 		if (fr) //padre
 			father(fd, argv, env);
 	}
-	error();
+	else
+		error("\033[31merror:\033[0m wrong number of arguments, expected 4\n"); 
 	return (0);
  }

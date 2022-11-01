@@ -26,7 +26,6 @@ clean:
 		@find . -name "*.swp" -delete
 		@find . -name "*.o" -delete
 		@find . -name "*.gch" -delete
-		@find . -name "*.txt" -delete
 		@make clean -C $(LIBFT_DIR)
 
 fclean:	clean
