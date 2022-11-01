@@ -6,7 +6,7 @@
 /*   By: tlufulua <tlufulua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:48:50 by tlufulua          #+#    #+#             */
-/*   Updated: 2022/11/01 16:43:06 by tlufulua         ###   ########.fr       */
+/*   Updated: 2022/11/01 19:40:32 by tlufulua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,14 @@
 # include <fcntl.h>
 # include <stdio.h>
 
+//MAIN
 void	father(int *fd, char **argv, char **env);
 void	child(int *fd, char **argv, char **env);
-void	error(char *str);
 
+//UTILS
+void	ft_error(char *str);
+char	**get_path(char **env);
+char	*get_cmd(char *str, char **env);
+void	check_arg(char **argv);
+char	*trim_spc(char *str);
 #endif

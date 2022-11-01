@@ -6,7 +6,7 @@ LIBFT_DIR	=	$(INC)libft/
 LIBFT_INC	=	$(LIBFT_DIR)inc/
 LIBFT		=	$(LIBFT_DIR)libft.a
 SRCS_DIR	=	srcs/
-SRCS		=
+SRCS		=	utils.c
 MAIN		=	$(SRCS_DIR)pipex.c
 OBJS		=	$(MAIN:%.c=%.o) $(addprefix $(SRCS_DIR), $(SRCS:%.c=%.o))
 
