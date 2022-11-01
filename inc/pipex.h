@@ -6,7 +6,7 @@
 /*   By: tlufulua <tlufulua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:48:50 by tlufulua          #+#    #+#             */
-/*   Updated: 2022/11/01 02:30:17 by tlufulua         ###   ########.fr       */
+/*   Updated: 2022/11/01 03:10:25 by tlufulua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,5 @@
 # include <libft.h>
 # include <sys/wait.h>
 # include <fcntl.h>
+# include <stdio.h>
 #endif
