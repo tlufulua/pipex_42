@@ -6,7 +6,7 @@
 /*   By: tlufulua <tlufulua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:46:43 by tlufulua          #+#    #+#             */
-/*   Updated: 2022/11/03 14:29:30 by tlufulua         ###   ########.fr       */
+/*   Updated: 2022/11/03 14:42:40 by tlufulua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	main(int argc, char **argv, char **env)
 		if (fr == 0)
 			child(fd, argv, env);
 		check = waitpid(fr, NULL, 0);
-		if (!check)
+		if (check)
 			return (-1);
 		if (fr)
 			father(fd, argv, env);
