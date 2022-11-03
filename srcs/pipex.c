@@ -6,7 +6,7 @@
 /*   By: tlufulua <tlufulua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:46:43 by tlufulua          #+#    #+#             */
-/*   Updated: 2022/11/02 01:11:56 by tlufulua         ###   ########.fr       */
+/*   Updated: 2022/11/03 14:29:30 by tlufulua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,12 @@ void	father(int *fd, char **argv, char **env)
 	free_split(vec);
 }
 
-void	salida()
-{
-	system("leaks pipex");
-}
-
 int	main(int argc, char **argv, char **env)
 {
 	int		fd[2];
 	pid_t	check;
 	pid_t	fr;
 
-	//atexit(salida);
 	if (argc == 5)
 	{
 		check_arg(argv);

@@ -6,7 +6,7 @@
 /*   By: tlufulua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 16:48:24 by tlufulua          #+#    #+#             */
-/*   Updated: 2022/11/02 01:11:38 by tlufulua         ###   ########.fr       */
+/*   Updated: 2022/11/03 14:29:36 by tlufulua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,6 @@ void	check_arg(char **argv)
 	while (argv[i])
 		if (!*argv[i++])
 			ft_error("\033[31merror\033[0m: empty arguments");
-	if (!*trim_spc(argv[2]) || !*trim_spc(argv[3]))	
+	if (!*trim_spc(argv[2]) || !*trim_spc(argv[3]))
 		ft_error("\033[31merror\033[0m: empty arguments");
 }
