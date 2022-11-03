@@ -6,7 +6,7 @@
 /*   By: tlufulua <tlufulua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:48:50 by tlufulua          #+#    #+#             */
-/*   Updated: 2022/11/03 14:29:33 by tlufulua         ###   ########.fr       */
+/*   Updated: 2022/11/03 15:11:20 by tlufulua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 //MAIN
 void	father(int *fd, char **argv, char **env);
-void	child(int *fd, char **argv, char **env);
+void	child(int infile, int *fd, char **argv, char **env);
 
 //UTILS
 void	ft_error(char *str);
