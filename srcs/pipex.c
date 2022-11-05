@@ -6,7 +6,7 @@
 /*   By: tlufulua <tlufulua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:46:43 by tlufulua          #+#    #+#             */
-/*   Updated: 2022/11/03 15:11:30 by tlufulua         ###   ########.fr       */
+/*   Updated: 2022/11/05 20:41:58 by tlufulua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,12 @@ void	child(int infile, int *fd, char **argv, char **env)
 	close(fd[0]);
 	vec = ft_split(argv[2], ' ');
 	cmd = get_cmd(vec[0], env);
-	execve(cmd, vec, env);
-	free(cmd);
-	free_split(vec);
+	if (execve(cmd, vec, env) == -1)
+	{
+		free(cmd);
+		free_split(vec);
+		ft_error("\033[31merror:\033[0m execve failed");
+	}
 }
 
 void	father(int *fd, char **argv, char **env)
@@ -42,8 +45,12 @@ void	father(int *fd, char **argv, char **env)
 	vec = ft_split(argv[3], ' ');
 	cmd = get_cmd(vec[0], env);
 	execve(cmd, vec, env);
-	free(cmd);
-	free_split(vec);
+	if (execve(cmd, vec, env) == -1)
+	{
+		free(cmd);
+		free_split(vec);
+		ft_error("\033[31merror:\033[0m execve failed");
+	}
 }
 
 int	main(int argc, char **argv, char **env)
@@ -64,7 +71,6 @@ int	main(int argc, char **argv, char **env)
 			ft_error("\033[31merror\033[0m: fork failure");
 		if (fr == 0)
 			child(infile, fd, argv, env);
-		waitpid(fr, NULL, 0);
 		if (fr)
 			father(fd, argv, env);
 	}
