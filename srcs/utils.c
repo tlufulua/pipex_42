@@ -6,7 +6,7 @@
 /*   By: tlufulua <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 16:48:24 by tlufulua          #+#    #+#             */
-/*   Updated: 2022/11/05 21:02:29 by tlufulua         ###   ########.fr       */
+/*   Updated: 2022/11/17 20:18:41 by tlufulua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	**get_path(char **env)
 	while (!ft_strnstr(env[i], "PATH", 5) && env[i])
 		i++;
 	if (!env[i])
-		ft_error("\033[31merror:\033[0m path not found");
+		ft_error("\033[31merror:\033[0m path not found\n");
 	path = ft_split(env[i] + 5, ':');
 	return (path);
 }
@@ -55,7 +55,7 @@ char	*get_cmd(char *str, char **env)
 	}
 	free_split(path);
 	if (access(cmd, F_OK))
-		ft_error("\033[31merror:\033[0m command not found");
+		ft_error("\033[31merror:\033[0m command not found\n");
 	return (cmd);
 }
 
@@ -73,7 +73,7 @@ void	check_arg(char **argv)
 	i = 0;
 	while (argv[i])
 		if (!*argv[i++])
-			ft_error("\033[31merror\033[0m: empty arguments");
+			ft_error("\033[31merror\033[0m: empty arguments\n");
 	if (!*trim_spc(argv[2]) || !*trim_spc(argv[3]))
-		ft_error("\033[31merror\033[0m: empty arguments");
+		ft_error("\033[31merror\033[0m: empty arguments\n");
 }

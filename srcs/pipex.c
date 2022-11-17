@@ -6,16 +6,11 @@
 /*   By: tlufulua <tlufulua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:46:43 by tlufulua          #+#    #+#             */
-/*   Updated: 2022/11/17 19:40:41 by tlufulua         ###   ########.fr       */
+/*   Updated: 2022/11/17 20:22:30 by tlufulua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pipex.h>
-
-void	hola()
-{
-	system("Leaks pipex");
-}
 
 void	child(int infile, int *fd, char **argv, char **env)
 {
@@ -31,7 +26,7 @@ void	child(int infile, int *fd, char **argv, char **env)
 	{
 		free(cmd);
 		free_split(vec);
-		ft_error("\033[31merror:\033[0m execve failed");
+		ft_error("\033[31merror:\033[0m execve failed\n");
 	}
 }
 
@@ -41,9 +36,9 @@ void	father(int *fd, char **argv, char **env)
 	char	*cmd;
 	char	**vec;
 
-	outfile = open(argv[4], O_WRONLY | O_CREAT, 0777);
+	outfile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (outfile == -1)
-		ft_error("\033[31merror:\033[0m can´t create or open the outfile");
+		ft_error("\033[31merror:\033[0m can´t create or open the outfile\n");
 	dup2(fd[0], STDIN_FILENO);
 	dup2(outfile, STDOUT_FILENO);
 	close(fd[1]);
@@ -54,7 +49,7 @@ void	father(int *fd, char **argv, char **env)
 	{
 		free(cmd);
 		free_split(vec);
-		ft_error("\033[31merror:\033[0m execve failed");
+		ft_error("\033[31merror:\033[0m execve failed\n");
 	}
 }
 
@@ -69,18 +64,21 @@ int	main(int argc, char **argv, char **env)
 		check_arg(argv);
 		infile = open(argv[1], O_RDONLY, 0777);
 		if (infile == -1)
-			ft_error("\033[31merror:\033[0m can´t open the infile");
+			ft_error("\033[31merror:\033[0m can´t open the infile\n");
 		pipe(fd);
 		fr = fork();
-		atexit(hola);
 		if (fr == -1)
-			ft_error("\033[31merror\033[0m: fork failure");
+			ft_error("\033[31merror\033[0m: fork failure\n");
 		if (fr == 0)
 			child(infile, fd, argv, env);
-		if (fr)
+		fr = fork();
+		if (fr == -1)
+			ft_error("\033[31merror\033[0m: fork failure\n");
+		if (fr == 0)
 			father(fd, argv, env);
 	}
 	else
-		ft_error("\033[31merror:\033[0m wrong number of arguments, expected 4");
+		ft_error("\033[31merror:\033[0m wrong number of arguments, expected 4\n");
+	wait(0);
 	return (0);
 }

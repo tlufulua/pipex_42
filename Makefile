@@ -22,10 +22,8 @@ $(LIBFT):
 		@make -C $(LIBFT_DIR)
 
 clean:
-		@find . -name ".DS_Store" -delete
-		@find . -name "*.swp" -delete
+		@rm -rf .DS_Store
 		@rm -rf $(OBJS)
-		@find . -name "*.gch" -delete
 		@make clean -C $(LIBFT_DIR)
 
 fclean:	clean
