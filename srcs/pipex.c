@@ -6,7 +6,7 @@
 /*   By: tlufulua <tlufulua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:46:43 by tlufulua          #+#    #+#             */
-/*   Updated: 2022/11/17 20:22:30 by tlufulua         ###   ########.fr       */
+/*   Updated: 2022/11/17 20:42:05 by tlufulua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,10 @@ int	main(int argc, char **argv, char **env)
 			ft_error("\033[31merror\033[0m: fork failure\n");
 		if (fr == 0)
 			child(infile, fd, argv, env);
-		fr = fork();
-		if (fr == -1)
-			ft_error("\033[31merror\033[0m: fork failure\n");
-		if (fr == 0)
+		else
 			father(fd, argv, env);
 	}
 	else
 		ft_error("\033[31merror:\033[0m wrong number of arguments, expected 4\n");
-	wait(0);
 	return (0);
 }
