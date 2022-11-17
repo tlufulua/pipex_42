@@ -6,11 +6,16 @@
 /*   By: tlufulua <tlufulua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 11:46:43 by tlufulua          #+#    #+#             */
-/*   Updated: 2022/11/05 20:41:58 by tlufulua         ###   ########.fr       */
+/*   Updated: 2022/11/17 19:40:41 by tlufulua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pipex.h>
+
+void	hola()
+{
+	system("Leaks pipex");
+}
 
 void	child(int infile, int *fd, char **argv, char **env)
 {
@@ -67,6 +72,7 @@ int	main(int argc, char **argv, char **env)
 			ft_error("\033[31merror:\033[0m can´t open the infile");
 		pipe(fd);
 		fr = fork();
+		atexit(hola);
 		if (fr == -1)
 			ft_error("\033[31merror\033[0m: fork failure");
 		if (fr == 0)

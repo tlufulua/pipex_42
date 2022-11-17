@@ -24,12 +24,12 @@ $(LIBFT):
 clean:
 		@find . -name ".DS_Store" -delete
 		@find . -name "*.swp" -delete
-		@find . -name "*.o" -delete
+		@rm -rf $(OBJS)
 		@find . -name "*.gch" -delete
 		@make clean -C $(LIBFT_DIR)
 
 fclean:	clean
-		@find . -name "$(NAME)" -delete
+		@rm -rf $(NAME)
 		@make fclean -C $(LIBFT_DIR)
 
 re:	fclean all
